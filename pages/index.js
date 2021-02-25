@@ -10,7 +10,6 @@ import voice4 from '../public/voice4.mp3';
 
 export default function Home() {
   const [currentVoiceIndex, setCurrentVoiceIndex] = useState(-1);
-  //const [play, stop, isPlaying] = useSound(voice1);
 
   const voices = [
     useSound(voice1),
