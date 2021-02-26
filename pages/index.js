@@ -3,28 +3,20 @@ import Head from 'next/head';
 import Image from 'next/image';
 import useSound from '../hooks/useSound.js';
 import styles from '../styles/Home.module.css';
-import voice1 from '../public/voice1.mp3';
-import voice2 from '../public/voice2.mp3';
-import voice3 from '../public/voice3.mp3';
-import voice4 from '../public/voice4.mp3';
+import voices from '../voices';
 
 export default function Home() {
   const [currentVoiceIndex, setCurrentVoiceIndex] = useState(-1);
 
-  const voices = [
-    useSound(voice1),
-    useSound(voice2),
-    useSound(voice3),
-    useSound(voice4)
-  ];
+  const voiceSounds = voices.map(useSound);
 
-  const isVoicePlaying = voices.some(voice => voice.isPlaying);
+  const isVoicePlaying = voiceSounds.some(voiceSound => voiceSound.isPlaying);
 
   function playVoice() {
     if(!isVoicePlaying) {
-      const voiceIndex = currentVoiceIndex >= voices.length - 1 ? 0 : currentVoiceIndex + 1;
+      const voiceIndex = currentVoiceIndex >= voiceSounds.length - 1 ? 0 : currentVoiceIndex + 1;
 
-      voices[voiceIndex].play();
+      voiceSounds[voiceIndex].play();
 
       setCurrentVoiceIndex(voiceIndex);
     }
