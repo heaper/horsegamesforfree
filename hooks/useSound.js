@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 
 export default function useSound(url) {
 
     const [audio, setAudio] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
-    useEffect(() => {
+    //synchronous needed for permission to play audio in Safari from a user interaction
+    useLayoutEffect(() => {
         if(audio !== null) {
             isPlaying ? audio.play() : audio.pause();
         }
