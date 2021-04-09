@@ -12,16 +12,52 @@ import beast from '../public/sounds/beast.mp3';
 import notFriends from '../public/sounds/not-friends.mp3';
 
 export default [
-    horseGames,
-    horseLords,
-    rohan,
-    fancyHooves,
-    clickClack,
-    pegasus,
-    neigh,
-    berriesCream,
-    glue,
-    itHurts,
-    beast,
-    notFriends
+    {
+        audio: horseGames,
+        caption: 'Horse Games For Free!'
+    },
+    {
+        audio: horseLords,
+        caption: 'Horse Lords!'
+    },
+    {
+        audio: rohan,
+        caption: 'Riders of Rohan!'
+    },
+    {
+        audio: fancyHooves,
+        caption: 'I\'ve Got Fancy Hooves!'
+    },
+    {
+        audio: clickClack,
+        caption: 'Click Clack, Click Clack!'
+    },
+    {
+        audio: pegasus,
+        caption: 'My Dad Is a Pegasus!'
+    },
+    {
+        audio: neigh,
+        caption: 'Sometimes I Winnie and Sometimes I Neigh!'
+    },
+    {
+        audio: berriesCream,
+        caption: 'I\'m a Little Lad Who Likes Berries and Cream!'
+    },
+    {
+        audio:glue,
+        caption: 'I Don\'t Like Glue!'
+    },
+    {
+        audio: itHurts,
+        caption: 'Please Stop Clicking Me, It Hurts!'
+    },
+    {
+        audio: beast,
+        caption: 'Ow, You Beast!'
+    },
+    {
+        audio: notFriends,
+        caption: 'We Are No Longer Best Friends!'
+    }
 ];

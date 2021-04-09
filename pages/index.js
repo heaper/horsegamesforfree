@@ -7,19 +7,29 @@ import voices from '../voices';
 
 export default function Home() {
   const [currentVoiceIndex, setCurrentVoiceIndex] = useState(-1);
+  const [text, setText] = useState('Horse Games For Free!');
 
-  const voiceSounds = voices.map(useSound);
+  const voiceSounds = voices.map(({audio}) => useSound(audio));
 
   const isVoicePlaying = voiceSounds.some(voiceSound => voiceSound.isPlaying);
 
-  function playVoice() {
+  function nextVoice() {
     if(!isVoicePlaying) {
       const voiceIndex = currentVoiceIndex >= voiceSounds.length - 1 ? 0 : currentVoiceIndex + 1;
 
-      voiceSounds[voiceIndex].play();
+      playAudio(voiceIndex);
+      updateText(voiceIndex);
 
       setCurrentVoiceIndex(voiceIndex);
     }
+  }
+
+  function playAudio(voiceIndex) {
+    voiceSounds[voiceIndex].play();
+  }
+
+  function updateText(voiceIndex) {
+    setText(voices[voiceIndex].caption);
   }
 
   let horseImageClassName = styles.horseImage;
@@ -46,9 +56,9 @@ export default function Home() {
       />
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Horse Games For Free!
+         {text}
         </h1>
-        <button className={styles.horseButton} onClick={playVoice}>
+        <button className={styles.horseButton} onClick={nextVoice}>
           <img 
             className={horseImageClassName}
             src="/horse.svg"
