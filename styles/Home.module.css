@@ -34,8 +34,8 @@
   font-size: 1em;
   position: absolute;
   bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  /*transform: translateX(-50%);*/
   outline: 0;
   cursor: pointer;
 }

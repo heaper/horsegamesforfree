@@ -2,6 +2,7 @@ import {useState} from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import useSound from '../hooks/useSound.js';
+import useGameLoop from '../hooks/useGameLoop.js';
 import styles from '../styles/Home.module.css';
 import voices from '../voices';
 
@@ -12,6 +13,8 @@ export default function Home() {
   const voiceSounds = voices.map(({audio}) => useSound(audio));
 
   const isVoicePlaying = voiceSounds.some(voiceSound => voiceSound.isPlaying);
+
+  const {position, direction, onKeyUp, onKeyDown} = useGameLoop({x: 0}, 1);
 
   function nextVoice() {
     if(!isVoicePlaying) {
@@ -58,7 +61,9 @@ export default function Home() {
         <h1 className={styles.title}>
          {text}
         </h1>
-        <button className={styles.horseButton} onClick={nextVoice}>
+        <button className={styles.horseButton} onClick={nextVoice} onKeyDown={onKeyDown} onKeyUp={onKeyUp} style={{
+          transform: `translateX(${position.x}vw) scaleX(${direction})`
+        }}>
           <img 
             className={horseImageClassName}
             src="/horse.svg"
