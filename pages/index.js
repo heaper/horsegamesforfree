@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import useSound from '../hooks/useSound.js';
@@ -9,12 +9,12 @@ export default function Home() {
   const [currentVoiceIndex, setCurrentVoiceIndex] = useState(-1);
   const [text, setText] = useState('Horse Games For Free!');
 
-  const voiceSounds = voices.map(({audio}) => useSound(audio));
+  const voiceSounds = voices.map(({ audio }) => useSound({ url: audio }));
 
-  const isVoicePlaying = voiceSounds.some(voiceSound => voiceSound.isPlaying);
+  const isVoicePlaying = voiceSounds.some((voiceSound) => voiceSound.isPlaying);
 
   function nextVoice() {
-    if(!isVoicePlaying) {
+    if (!isVoicePlaying) {
       const voiceIndex = currentVoiceIndex >= voiceSounds.length - 1 ? 0 : currentVoiceIndex + 1;
 
       playAudio(voiceIndex);
@@ -33,7 +33,7 @@ export default function Home() {
   }
 
   let horseImageClassName = styles.horseImage;
-  if(isVoicePlaying) {
+  if (isVoicePlaying) {
     horseImageClassName += ` ${styles.neigh}`;
   }
 
@@ -41,9 +41,6 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Horse Games For Free!</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
       </Head>
       <Image
         alt="Background"
@@ -55,16 +52,11 @@ export default function Home() {
         quality={75}
       />
       <main className={styles.main}>
-        <h1 className={styles.title}>
-         {text}
-        </h1>
+        <h1 className={styles.title}>{text}</h1>
         <button className={styles.horseButton} onClick={nextVoice}>
-          <img 
-            className={horseImageClassName}
-            src="/horse.svg"
-            alt="horse" />
+          <img className={horseImageClassName} src="/horse.svg" alt="horse" />
         </button>
       </main>
     </div>
-  )
+  );
 }

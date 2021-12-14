@@ -1,0 +1,7 @@
+.snow {
+  z-index: -1;
+  background-color: #005027;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
