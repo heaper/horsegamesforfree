@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import Head from 'next/head';
 import { Snow } from '../components/snow';
 import styles from '../styles/Piano.module.css';
@@ -31,7 +31,7 @@ export default function Piano() {
     voiceSounds[voiceIndex].play();
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (letItSnow) {
       sleighBellsSound.play();
     } else {
